@@ -1,0 +1,3 @@
+= Simple example
+
+This example shows a simple DynamoDB table.

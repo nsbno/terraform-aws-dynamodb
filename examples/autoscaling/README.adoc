@@ -1,0 +1,5 @@
+= Autoscaling example
+
+This example shows a simple DynamoDB table with autoscaling.
+The autoscaling will increase and decrease when the Read- and Write capacity utilization is less than or greater than 70% respectively.
+
