@@ -10,8 +10,6 @@ terraform {
 }
 
 locals {
-  name = "${var.name_prefix}-${var.application_name}-${var.table_name}"
-
   all_attribs = concat(
     [{
       name = var.hash_key
@@ -22,7 +20,7 @@ locals {
 }
 
 resource "aws_dynamodb_table" "table" {
-  name           = local.name
+  name           = var.table_name
   billing_mode   = var.billing_mode
   read_capacity  = var.billing_mode == "PROVISIONED" ? var.min_read_capacity : null
   write_capacity = var.billing_mode == "PROVISIONED" ? var.min_write_capacity : null
@@ -49,7 +47,7 @@ resource "aws_dynamodb_table" "table" {
   }
 
   tags = merge({
-    Name    = local.name
+    Name    = var.table_name
     AppName = var.application_name
   }, var.tags)
 
