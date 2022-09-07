@@ -63,6 +63,12 @@ variable "attributes" {
   default = []
 }
 
+variable "global_secondary_indices" {
+  description = "A map defining global secondary indices"
+  type        = any
+  default     = []
+}
+
 variable "enable_point_in_time_recovery" {
   description = "Enable Point-in-time recovery (PITR)"
   type        = bool
@@ -70,13 +76,13 @@ variable "enable_point_in_time_recovery" {
 }
 
 variable "ttl_attribute" {
-  description = "value"
+  description = "Name of the attribute that stores the Time to live timestamp"
   type        = string
   default     = "Expires"
 }
 
 variable "ttl_enabled" {
-  description = "value"
+  description = "Enable Time to live"
   type        = bool
   default     = false
 }
