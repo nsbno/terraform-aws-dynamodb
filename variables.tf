@@ -63,6 +63,14 @@ variable "attributes" {
   default = []
 }
 
+variable "stream" {
+  type = object({
+    enabled   = bool
+    view_type = string
+  })
+  default = null
+}
+
 variable "global_secondary_indices" {
   description = "A map defining global secondary indices"
   type        = any
