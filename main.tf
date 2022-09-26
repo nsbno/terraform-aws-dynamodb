@@ -26,8 +26,8 @@ resource "aws_dynamodb_table" "table" {
   write_capacity = var.billing_mode == "PROVISIONED" ? var.min_write_capacity : null
   hash_key       = var.hash_key
 
-  stream_enabled   = var.stream != null ? try(var.stream.enabled, null) : null
-  stream_view_type = var.stream != null ? try(var.stream.view_type, null) : null
+  stream_enabled   = var.stream_enabled
+  stream_view_type = var.stream_enabled ? var.stream_view_type : null
 
   dynamic "attribute" {
     for_each = local.all_attribs

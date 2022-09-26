@@ -63,12 +63,14 @@ variable "attributes" {
   default = []
 }
 
-variable "stream" {
-  type = object({
-    enabled   = bool
-    view_type = string
-  })
-  default = null
+variable "stream_enabled" {
+  type    = bool
+  default = false
+}
+
+variable "stream_view_type" {
+  type    = string
+  default = ""
 }
 
 variable "global_secondary_indices" {
