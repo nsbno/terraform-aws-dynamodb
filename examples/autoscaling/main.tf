@@ -3,14 +3,12 @@ provider "aws" {
 }
 
 locals {
-  name_prefix      = "example"
   application_name = "autoscaling"
 }
 
 module "dynamodb" {
   source = "../../"
 
-  name_prefix      = local.name_prefix
   application_name = local.application_name
   table_name       = "table"
 
