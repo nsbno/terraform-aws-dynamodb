@@ -1,8 +1,3 @@
-variable "name_prefix" {
-  description = "A prefix used for naming resources."
-  type        = string
-}
-
 variable "application_name" {
   description = "Name of the application that is using this table"
   type        = string
