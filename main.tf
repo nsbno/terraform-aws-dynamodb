@@ -62,11 +62,6 @@ resource "aws_dynamodb_table" "table" {
     enabled = var.enable_point_in_time_recovery
   }
 
-  tags = merge({
-    Name    = var.table_name
-    AppName = var.application_name
-  }, var.tags)
-
   lifecycle {
     ignore_changes = [
       read_capacity,

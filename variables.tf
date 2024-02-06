@@ -1,8 +1,3 @@
-variable "application_name" {
-  description = "Name of the application that is using this table"
-  type        = string
-}
-
 variable "table_name" {
   description = "Name of the table"
   type        = string
@@ -90,10 +85,4 @@ variable "ttl_enabled" {
   description = "Enable Time to live"
   type        = bool
   default     = false
-}
-
-variable "tags" {
-  description = "A map of tags (key-value pairs) passed to resources."
-  type        = map(string)
-  default     = {}
 }
