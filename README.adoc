@@ -1,14 +1,18 @@
-= dynamodb
+= DynamoDB
 :!toc-title:
 :!toc-placement:
 :toc:
 
 // TODO: Write a sentence about what this module is for
+Set up a DynamoDB table with this module.
 
 toc::[]
 
 == About
 // TODO: Write what this module does and what problem it solves
+This module provides a DynamoDB table. It can be configured to use `Streams`, `TTL`, `GSI`, `LSI`, and multiple
+billing
+modes.
 
 == Usage
 To use this module, just add it to your terraform!
@@ -19,8 +23,9 @@ To use this module, just add it to your terraform!
 ----
 module "dynamodb" {
   source = "github.com/nsbno/terraform-aws-dynamodb?ref=x.y.z"
-  
-  
+
+  table_name   = "table"
+  hash_key     = "pk"
 }
 ----
 

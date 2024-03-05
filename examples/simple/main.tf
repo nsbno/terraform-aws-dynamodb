@@ -7,5 +7,5 @@ module "dynamodb" {
 
   table_name   = "table"
   hash_key     = "PrimaryKey"
-  billing_mode = "PAY_PER_REQUEST"
+  range_key    = "SortKey"
 }
