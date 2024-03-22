@@ -86,3 +86,9 @@ variable "ttl_enabled" {
   type        = bool
   default     = false
 }
+
+variable "deletion_protection_enabled" {
+  description = "Enables deletion protection for table."
+  type        = bool
+  default     = null
+}
