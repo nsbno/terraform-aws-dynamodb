@@ -1,26 +1,29 @@
-= dynamodb
+= Dynamodb
 :!toc-title:
 :!toc-placement:
 :toc:
 
-// TODO: Write a sentence about what this module is for
+Set up a DynamoDB table! In most cases where you only need a simple table, it may be easier to just use the default `aws_dynamodb_table` resource from Terraform.
 
 toc::[]
 
-== About
-// TODO: Write what this module does and what problem it solves
-
 == Usage
-To use this module, just add it to your terraform!
-
-// TODO: Add variables to the module example!
+Remember to check out the link:variables.tf[*variables*] and link:outputs.tf[*outputs*] to see all options.
 
 [source, hcl]
 ----
 module "dynamodb" {
   source = "github.com/nsbno/terraform-aws-dynamodb?ref=x.y.z"
-  
-  
+
+  table_name = "test_db"
+  hash_key   = "pk"
 }
 ----
 
+
+== Examples
+link:examples/simple[Simple DynamoDB]::
+Simple DynamoDB Setup.
+
+link:examples/autoscaling[DynamoDB with Autoscaling]::
+Setup including autoscaling.
