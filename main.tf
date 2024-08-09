@@ -11,10 +11,16 @@ terraform {
 
 locals {
   all_attribs = concat(
-    [{
-      name = var.hash_key
-      type = var.hash_key_type
-    }],
+    [
+      {
+        name = var.hash_key
+        type = var.hash_key_type
+      }
+    ],
+    var.range_key != null ? {
+      name = var.range_key
+      type = var.range_key_type
+    } : [],
     var.attributes
   )
 }
@@ -25,6 +31,7 @@ resource "aws_dynamodb_table" "table" {
   read_capacity  = var.billing_mode == "PROVISIONED" ? var.min_read_capacity : null
   write_capacity = var.billing_mode == "PROVISIONED" ? var.min_write_capacity : null
   hash_key       = var.hash_key
+  range_key      = var.range_key
 
   stream_enabled   = var.stream_enabled
   stream_view_type = var.stream_enabled ? var.stream_view_type : null
