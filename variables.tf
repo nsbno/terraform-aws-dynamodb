@@ -44,6 +44,18 @@ variable "hash_key_type" {
   default     = "S"
 }
 
+variable "range_key" {
+  description = "DynamoDB range key"
+  type        = string
+  default     = null
+}
+
+variable "range_key_type" {
+  description = "DynamoDB range key type"
+  type        = string
+  default     = "S"
+}
+
 variable "attributes" {
   description = "Additional attributes"
   type = list(object({
