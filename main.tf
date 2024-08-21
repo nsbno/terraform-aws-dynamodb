@@ -11,15 +11,19 @@ terraform {
 
 locals {
   all_attribs = concat(
-    [{
-      name = var.hash_key
-      type = var.hash_key_type
-    },
-      var.range_key != null &&
-    {
-      name = var.range_key
-      type = var.range_key_type
-    }],
+    [
+      {
+        name = var.hash_key
+        type = var.hash_key_type
+      }
+    ],
+      var.range_key != "" && var.range_key != null ?
+      [
+        {
+          name = var.range_key
+          type = var.range_key_type
+        }
+      ] : [],
     var.attributes
   )
 }
@@ -54,12 +58,12 @@ resource "aws_dynamodb_table" "table" {
   dynamic "global_secondary_index" {
     for_each = var.global_secondary_indices
     content {
-      hash_key           = global_secondary_index.value.hash_key
-      name               = global_secondary_index.value.name
-      projection_type    = global_secondary_index.value.projection_type
-      range_key          = lookup(global_secondary_index.value, "range_key", null)
-      read_capacity      = lookup(global_secondary_index.value, "read_capacity", null)
-      write_capacity     = lookup(global_secondary_index.value, "write_capacity", null)
+      hash_key        = global_secondary_index.value.hash_key
+      name            = global_secondary_index.value.name
+      projection_type = global_secondary_index.value.projection_type
+      range_key = lookup(global_secondary_index.value, "range_key", null)
+      read_capacity = lookup(global_secondary_index.value, "read_capacity", null)
+      write_capacity = lookup(global_secondary_index.value, "write_capacity", null)
       non_key_attributes = lookup(global_secondary_index.value, "non_key_attributes", null)
     }
   }
