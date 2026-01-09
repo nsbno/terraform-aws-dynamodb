@@ -36,6 +36,8 @@ resource "aws_dynamodb_table" "table" {
   hash_key       = var.hash_key
   range_key      = var.range_key
 
+  deletion_protection_enabled = var.enable_deletion_protection
+
   stream_enabled   = var.stream_enabled
   stream_view_type = var.stream_enabled ? var.stream_view_type : null
 
