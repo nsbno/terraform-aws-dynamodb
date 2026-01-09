@@ -87,6 +87,12 @@ variable "enable_point_in_time_recovery" {
   default     = false
 }
 
+variable "enable_deletion_protection" {
+  description = "Enable deletion protection"
+  type        = bool
+  default     = false
+}
+
 variable "ttl_attribute" {
   description = "Name of the attribute that stores the Time to live timestamp"
   type        = string
